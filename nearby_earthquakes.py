@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     try:
         detector = EarthquakeDetector()
-        nearest_earthquakes = detector.find_k_nearest((args.longitude, args.latitude))
+        nearest_earthquakes = detector.find_k_nearest_from((args.longitude, args.latitude))
 
         for earthquake in nearest_earthquakes:
             print(f"{earthquake.place} || {earthquake.distance}")
