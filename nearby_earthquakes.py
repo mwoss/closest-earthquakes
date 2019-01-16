@@ -3,7 +3,7 @@ import argparse
 from detectors.earthquake import EarthquakeDetector
 
 
-def restricted_coordinates(coordinate: str):
+def geo_coordinates(coordinate: str):
     coordinate = float(coordinate)
     if -180.0 > coordinate or coordinate > 180.0:
         raise argparse.ArgumentTypeError(f"Coordinate: {coordinate} is not in range [-180, 180]")
@@ -13,8 +13,8 @@ def restricted_coordinates(coordinate: str):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Script for finding 10 most nearby earthquakes "
                                                  "to the given city (longitude, latitude).")
-    parser.add_argument('longitude', type=restricted_coordinates, help='Longitude coordinates.')
-    parser.add_argument('latitude', type=restricted_coordinates, help='Latitude coordinates.')
+    parser.add_argument('longitude', type=geo_coordinates, help='Longitude coordinates.')
+    parser.add_argument('latitude', type=geo_coordinates, help='Latitude coordinates.')
     args = parser.parse_args()
 
     try:

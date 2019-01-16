@@ -3,8 +3,10 @@ from typing import Tuple
 
 import requests
 
-from utils.collections import UniqueSortedList
-from utils.constants import EARTH_RADIUS, USGS_URI
+from detectors.collections.sorted import HeapSet
+
+EARTH_RADIUS = 6371.0
+USGS_URI = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson"
 
 
 class Earthquake:
@@ -41,7 +43,7 @@ class EarthquakeDetector:
     def find_k_nearest(geo_coordinates: Tuple[float, float], k: int = 10):
         request = requests.get(USGS_URI)
         features = request.json()['features']
-        earthquakes = UniqueSortedList()
+        earthquakes = HeapSet()
 
         for feature in features:
             earthquakes.add(Earthquake(place=feature['properties']['title'],
@@ -49,4 +51,4 @@ class EarthquakeDetector:
                                        latitude=feature['geometry']['coordinates'][1],
                                        origin=geo_coordinates))
 
-        return earthquakes.ordered_result()[:k] if k > 0 else []
+        return earthquakes.as_ordered_list()[:k] if k > 0 else []
