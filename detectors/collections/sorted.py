@@ -20,7 +20,7 @@ class HeapObj:
 class LimitedMinSet:
     """
     Sorted collection based on heap data structure.
-    LimitedMinSet main functionality is to store 'maxsize' smallest elements.
+    Main functionality of LimitedMinSet is to store 'maxsize' smallest elements.
     Collection can store maximally 'maxsize' elements in one time. Collection contains only unique entries
     """
 
