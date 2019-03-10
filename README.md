@@ -1,6 +1,6 @@
 # nearby-earthquakes
   
-Console script for findoug out 10 most nearby earthquakes for the given coordinates (earthquakes that happened in the closest proximity of those coordinates) that happened during last 30 days.
+Console script for finding out 10 most nearby earthquakes for the given coordinates (earthquakes that happened in the closest proximity of those coordinates) that happened during last 30 days.
 
 ## Example usage: 
 
